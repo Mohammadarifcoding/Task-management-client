@@ -41,7 +41,10 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <button className='px-4 py-2  rounded-xl  border-none bg-[#3AA39F] text-white hover:bg-[#28706e]'>Get Started</button>
+  <button className="bg-gradient-to-r hover:from-teal-700 hover:to-blue-600 from-teal-600 to-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:shadow-lg">
+                  Join Now
+</button>
+
   </div>
 </div> 
           </Container>
