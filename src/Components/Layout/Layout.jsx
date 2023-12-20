@@ -4,7 +4,7 @@ import Container from "../Shared/Container";
 
 const Layout = () => {
   return (
-    <div className="max-w-[1700px] mx-auto">
+    <div className="max-w-[1700px] bg-[#161420] mx-auto">
 <Navbar></Navbar>
         <Outlet></Outlet>
     </div>
