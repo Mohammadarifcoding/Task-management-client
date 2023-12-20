@@ -1,11 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import Container from "../Shared/Container";
 
 const Layout = () => {
+  const location = useLocation()
+  console.log(location.pathname)
   return (
     <div className="max-w-[1700px] bg-[#161420] mx-auto">
-<Navbar></Navbar>
+     {
+                location.pathname == '/dashboard' || (location.pathname == '/login' || location.pathname == '/register') ? '':<Navbar></Navbar>
+            }
+            
         <Outlet></Outlet>
     </div>
 

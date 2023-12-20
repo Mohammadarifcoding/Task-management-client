@@ -1,5 +1,5 @@
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Container from "./Container";
 
 const Navbar = () => {
@@ -41,9 +41,12 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <button className="bg-gradient-to-r hover:from-teal-700 hover:to-blue-600 from-teal-600 to-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:shadow-lg">
+    <Link to={'/login'}>
+    <button className="bg-gradient-to-r hover:from-teal-700 hover:to-blue-600 from-teal-600 to-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:shadow-lg">
                   Join Now
 </button>
+    </Link>
+ 
 
   </div>
 </div> 
