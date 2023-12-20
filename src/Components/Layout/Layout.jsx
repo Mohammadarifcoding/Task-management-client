@@ -4,12 +4,14 @@ import Container from "../Shared/Container";
 
 const Layout = () => {
   return (
-    <Container>
-      <div>
-        <Navbar></Navbar>
+    <div className="max-w-[1700px] mx-auto">
+<Navbar></Navbar>
         <Outlet></Outlet>
-      </div>
-    </Container>
+    </div>
+
+        
+
+    
   );
 };
 

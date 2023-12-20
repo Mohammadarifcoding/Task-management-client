@@ -1,8 +1,17 @@
 
+import { NavLink } from "react-router-dom";
+import Container from "./Container";
+
 const Navbar = () => {
+    const link = <>
+    <NavLink to={'/'} className='border-b-[2px] hover:border-b-[2px] hover:border-[#3AA39F] px-1 pb-[2px] '>Home</NavLink>
+    <NavLink to={'/dashboard'} className='border-b-[2px] hover:border-b-[2px] hover:border-[#3AA39F] px-1 pb-[2px] '>Dashboard</NavLink>
+
+    </>
     return (
-        <div className="bg-[#292731]">
-           <div className="navbar bg-base-100 max-w-[1300px] mx-auto">
+        <div className="bg-[#292731] text-white">
+          <Container>
+          <div className="navbar ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -20,27 +29,23 @@ const Navbar = () => {
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
-  </div>
+    <div className="flex items-center gap-1">
+      <img className="w-[35px]" src="/logo.png" alt="" />  
+      <h2 className="text-xl">TaskFlow</h2>
+    </div>
+      
+     </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+    <ul className="menu menu-horizontal gap-5 menuItemLInk px-1">
+     {link}
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+  <button className='px-4 py-2  rounded-xl  border-none bg-[#3AA39F] text-white hover:bg-[#28706e]'>Get Started</button>
   </div>
 </div> 
+          </Container>
+          
         </div>
     );
 };
