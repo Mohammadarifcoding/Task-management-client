@@ -1,8 +1,30 @@
+import { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 
 const Dashboard = () => {
+     const [itemNumber,setItemNumber] = useState(0)
+    const items = [ {
+        item : 'All Tasks',
+        id:0
+    },
+    {
+        item : 'Ongoing',
+        id:1
+    },
+    {
+        item : 'Completed',
+        id:2
+    },
+    {
+        item : 'Pending',
+        id:3
+    }
+
+]
+
+
     return (
         <div className="text-white lg:p-[30px] md:p-[20px] p-2">
         <h2 className="lg:text-[30px] ml-3 mt-3 font-medium md:text-[26px] items-center text-[24px] flex gap-4">Hello, Mohammad Arif <img className="lg:w-10  w-8" src="/images/hand.png" alt="" /></h2>
@@ -19,11 +41,59 @@ const Dashboard = () => {
         </div>
 
 
-        
-        <Tabs>
-    <TabList>
-      <Tab>Title 1</Tab>
-      <Tab>Title 2</Tab>
+        {/* Tabs */}
+
+      <div className='mt-10'>
+      <Tabs >
+      <TabList className='border-b-0 flex sm:justify-start justify-center gap-3 flex-wrap'>
+      {items?.map((item) => (
+        <Tab
+        onClick={()=>{setItemNumber(item.id)}}
+          className={`rounded-full md:px-4 md:py-2 px-3 py-1 border-2 outline-none  border-[#3e3857] ${
+            itemNumber  !== item.id ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
+          }`}
+          key={item.id}
+        >
+          {item.item}
+        </Tab>
+      ))}
+{/* <Tab
+        onClick={()=>{setItemNumber(1)}}
+          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
+            itemNumber  !== 1 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
+          }`}
+          
+        >
+          All Task
+        </Tab>
+        <Tab
+        onClick={()=>{setItemNumber(2)}}
+          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
+            itemNumber  !== 2 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
+          }`}
+          
+        >
+          All Task
+        </Tab>
+        <Tab
+        onClick={()=>{setItemNumber(3)}}
+          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
+            itemNumber  !== 3 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
+          }`}
+          
+        >
+          All Task
+        </Tab>
+        <Tab
+        onClick={()=>{setItemNumber(4)}}
+          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
+            itemNumber  !== 4 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
+          }`}
+          
+        >
+          All Task
+        </Tab> */}
+      
     </TabList>
 
     <TabPanel>
@@ -32,7 +102,16 @@ const Dashboard = () => {
     <TabPanel>
       <h2>Any content 2</h2>
     </TabPanel>
+    <TabPanel>
+      <h2>Any content 3</h2>
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 4</h2>
+    </TabPanel>
   </Tabs>
+      </div>
+
+       
         </div>
     );
 };

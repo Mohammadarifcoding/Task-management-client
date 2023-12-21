@@ -11,3 +11,12 @@
 .menuItemLInk a.active{
     border-bottom: 2px solid #3AA39F;
 }
+
+.react-tabs__tab--selected{
+    background: black;
+
+    border-radius: 100px;
+}
+react-tabs__tab--selected:focus{
+    background-color: black;
+}
