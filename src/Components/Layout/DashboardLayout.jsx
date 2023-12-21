@@ -16,7 +16,7 @@ const DashboardLayout = () => {
 
         <>
                 <div className='lg:flex hidden bg-[#161420] min-h-screen '>
-            <div className='lg:w-[22%] w-full lg:block hidden border-r-[5px] border-[#3e3857]'>
+            <div className='lg:w-[22%]  fixed top-0 h-full w-full lg:block hidden border-r-[5px] border-[#3e3857]'>
                 <div className='flex justify-center items-center gap-4 mt-[40px] px-[40px]'>
                     <img src="/images/User.png" className='rounded-full xl:w-[70px] w-[60px]' alt="" />
                     <p className='xl:text-xl text-lg font-semibold text-white'>Mohammad Arif</p>
@@ -29,7 +29,7 @@ const DashboardLayout = () => {
             
                 </div>
             </div>
-            <div className='lg:w-[78%] w-full  '>
+            <div className='lg:w-[78%] ml-auto w-full  '>
               <Outlet></Outlet>
             </div>
             

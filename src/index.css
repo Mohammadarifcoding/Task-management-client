@@ -13,10 +13,10 @@
 }
 
 .react-tabs__tab--selected{
-    background: black;
-
-    border-radius: 100px;
+    background: rgb(15, 15, 15) !important;
+   color: white !important;;
+    border-radius: 100px !important;
 }
-react-tabs__tab--selected:focus{
+.react-tabs__tab--selected:focus{
     background-color: black;
 }

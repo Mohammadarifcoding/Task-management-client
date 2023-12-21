@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     return (
         <div className="text-white lg:p-[30px] md:p-[20px] p-2">
-        <h2 className="lg:text-[30px] ml-3 mt-3 font-medium md:text-[26px] items-center text-[24px] flex gap-4">Hello, Mohammad Arif <img className="lg:w-10  w-8" src="/images/hand.png" alt="" /></h2>
+        <h2 className="lg:text-[30px] ml-3 mt-3 font-medium md:text-[26px] items-center text-[24px] flex flex-wrap gap-4">Hello, Mohammad <span className='flex items-center'>Arif <img className="lg:w-10  w-8" src="/images/hand.png" alt="" /></span> </h2>
         
         <div className=" ml-3 mt-10  flex sm:flex-row flex-col gap-5 ">
             <h2 className="">Today you have </h2> 
@@ -47,9 +47,10 @@ const Dashboard = () => {
       <Tabs >
       <TabList className='border-b-0 flex sm:justify-start justify-center gap-3 flex-wrap'>
       {items?.map((item) => (
-        <Tab
+        <Tab 
+        
         onClick={()=>{setItemNumber(item.id)}}
-          className={`rounded-full md:px-4 md:py-2 px-3 py-1 border-2 outline-none  border-[#3e3857] ${
+          className={` rounded-full md:px-4 md:py-2 px-3 py-1 border-2 outline-none  border-[#3e3857] ${
             itemNumber  !== item.id ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
           }`}
           key={item.id}
