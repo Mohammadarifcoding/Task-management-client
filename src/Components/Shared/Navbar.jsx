@@ -5,7 +5,7 @@ import Container from "./Container";
 const Navbar = () => {
     const link = <>
     <NavLink to={'/'} className='border-b-[2px] hover:border-b-[2px] hover:border-[#3AA39F] px-1 pb-[2px] '>Home</NavLink>
-    <NavLink to={'/dashboard'} className='border-b-[2px] hover:border-b-[2px] hover:border-[#3AA39F] px-1 pb-[2px] '>Dashboard</NavLink>
+    <NavLink to={'/dashboard/dash'} className='border-b-[2px] hover:border-b-[2px] hover:border-[#3AA39F] px-1 pb-[2px] '>Dashboard</NavLink>
 
     </>
     return (

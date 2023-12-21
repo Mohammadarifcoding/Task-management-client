@@ -11,6 +11,7 @@ import Layout from './Components/Layout/Layout';
 import Register from './Components/Pages/Register/Register';
 import Login from './Components/Pages/Login/Login';
 import DashboardLayout from './Components/Layout/DashboardLayout';
+import Dashboard from './Components/Pages/Dashboard/Dashboard';
 
 
 
@@ -34,13 +35,22 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
-      },
-      {
-        path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>
       }
+     
     ]
   },
+  {
+    path:'/dashboard',
+    element:<DashboardLayout></DashboardLayout>,
+    children:[
+      {
+        path:'dash',
+        element:<Dashboard></Dashboard>
+        
+      }
+    ]
+  }
+  
 ]);
 
 
