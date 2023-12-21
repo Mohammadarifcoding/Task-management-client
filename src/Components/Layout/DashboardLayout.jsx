@@ -5,7 +5,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 //import styles 👇
 import 'react-modern-drawer/dist/index.css'
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -25,7 +25,10 @@ const DashboardLayout = () => {
                 <div className='px-[20px] mt-16'>
               <button className='flex p-[20px] w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white gap-3 text-lg font-medium'> <img src="/images/dashBoardIcon.svg" alt="" />Dashboard</button>
               <div className="divider divide  text-white">OR</div>
-              <button className='flex p-[20px] w-full rounded-xl  border-[#272A30] border text-white gap-3 text-lg font-medium'> <FaHome className="text-3xl"></FaHome>  Home </button>
+              <Link to={'/'}>
+              <button className='flex p-[20px] w-full rounded-xl  border-[#272A30] hover:bg-[#282931] border text-white gap-3 text-lg font-medium'> <FaHome className="text-3xl"></FaHome>  Home </button>
+              </Link>
+              
             
                 </div>
             </div>

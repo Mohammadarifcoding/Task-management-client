@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
+import axios from "axios";
 
 
 const Register = () => {
-    //   const { creatUser, update , Google } = UseAuth();
+      const { creatUser, update , Google , GitHub } = useContext(AuthContext);
   const navigate = useNavigate();
   const  [regLoading,setRegLoading] = useState(false)
 //   const AxiousPublic = UseAxious()
@@ -35,122 +38,154 @@ const Register = () => {
     },
   });
   const handleRegister = async (e) => {
-    // e.preventDefault();
-    // setRegLoading(true)
-    // const image = fullImage;
-    // console.log(image);
-    // const result = await axios.post(
-    //   `https://api.imgbb.com/1/upload?key=aeeb86c89c07e1b579479f8b39ef94a5`,
-    //   { image },
-    //   {
-    //     headers: {
-    //       "content-type": "multipart/form-data",
-    //     },
-    //   }
-    // );
-    // console.log(result);
+    e.preventDefault();
+    setRegLoading(true)
+    const image = fullImage;
+    console.log(image);
+    const result = await axios.post(
+      `https://api.imgbb.com/1/upload?key=aeeb86c89c07e1b579479f8b39ef94a5`,
+      { image },
+      {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      }
+    );
+    console.log(result);
 
-    // const form = e.target;
-    // const Name = form.Name.value;
-    // const email = form.email.value;
-    // const password = form.password.value;
+    const form = e.target;
+    const Name = form.Name.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
-    // let img = result?.data?.data?.display_url;
-    // console.log(img);
+    let img = result?.data?.data?.display_url;
+    console.log(img);
 
-    // if (password.length < 6) {
-    //   setRegLoading(false)
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "The password need to contain 6 character",
-    //   });
-    //   return;
-    // } else if (!/[A-Z]/.test(password)) {
-    //   setRegLoading(false)
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "The password need to contain Capital letter",
-    //   });
-    //   return;
-    // } 
+    if (password.length < 6) {
+      setRegLoading(false)
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "The password need to contain 6 character",
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegLoading(false)
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "The password need to contain Capital letter",
+      });
+      return;
+    } 
 
-    // creatUser(email, password)
-    //   .then((res) => {
-    //     console.log(res.user);
-    //     update(Name, img).then().catch()
-    //     const loggedUser = { email: email , name : Name  };
-    //     AxiousPublic.post("/users",  loggedUser )
-    //      .then((res) => {
-    //        console.log(res.data)
-    //      })
-    //     setRegLoading(false)
+    creatUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+        update(Name, img).then().catch()
 
-    //     Swal.fire({
-    //       title: "Your account have been created.",
-    //       width: 600,
-    //       padding: "3em",
-    //       color: "#716add",
-    //       background: "#fff url(/images/trees.png)",
-    //       backdrop: `
-    //               rgba(0,0,123,0.4)
-    //               url("/images/nyan-cat.gif")
-    //               left top
-    //               no-repeat
-    //             `,
-    //     });
-    //     navigate('/')
-    //     setTimeout(() => {
-    //       location.reload();
-    //     }, 3000);
-    //   })
-    //   .catch((err) => {
-    //     setRegLoading(false)
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Oops...",
-    //       text: "Something went wrong",
-    //     });
-    //   });
+      
+        setRegLoading(false)
+
+        Swal.fire({
+          title: "Your account have been created.",
+          width: 600,
+          padding: "3em",
+          color: "#716add",
+          background: "#fff url(/images/trees.png)",
+          backdrop: `
+                  rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  left top
+                  no-repeat
+                `,
+        });
+        navigate('/dashboard/dash')
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      })
+      .catch((err) => {
+        setRegLoading(false)
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong",
+        });
+      });
   };
 
   
  const handelGoogle = ()=>{
-    //    Google()
-    //    .then(res => {
-    //     const loggedUser = { email: res.user.email , name : res.user.displayName };
-    //     AxiousPublic.post("/users",  loggedUser )
-    //      .then((res) => {
-    //        console.log(res.data)
-    //      })
-    //     setRegLoading(true)
-    //     Swal.fire({
-    //       title: "Your account have been created.",
-    //       width: 600,
-    //       padding: "3em",
-    //       color: "#716add",
-    //       background: "#fff url(/images/trees.png)",
-    //       backdrop: `
-    //               rgba(0,0,123,0.4)
-    //               url("/images/nyan-cat.gif")
-    //               left top
-    //               no-repeat
-    //             `,
-    //     });
-    //     navigate('/')
+       Google()
+       .then(res => {
+        // const loggedUser = { email: res.user.email , name : res.user.displayName };
+        // AxiousPublic.post("/users",  loggedUser )
+        //  .then((res) => {
+        //    console.log(res.data)
+        //  })
+        setRegLoading(true)
+        Swal.fire({
+          title: "Your account have been created.",
+          width: 600,
+          padding: "3em",
+          color: "#716add",
+          background: "#fff url(/images/trees.png)",
+          backdrop: `
+                  rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  left top
+                  no-repeat
+                `,
+        });
+        navigate('/dashboard/dash')
        
-    //    })
-    //    .catch(res => {
-    //     setRegLoading(false)
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Oops...",
-    //       text: "Something went wrong",
-    //     });
-    //    })
+       })
+       .catch(res => {
+        setRegLoading(false)
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong",
+        });
+       })
  }
 
+
+ const handelGitHub = ()=>{
+  GitHub()
+  .then(res => {
+   // const loggedUser = { email: res.user.email , name : res.user.displayName };
+   // AxiousPublic.post("/users",  loggedUser )
+   //  .then((res) => {
+   //    console.log(res.data)
+   //  })
+   setRegLoading(true)
+   Swal.fire({
+     title: "Your account have been created.",
+     width: 600,
+     padding: "3em",
+     color: "#716add",
+     background: "#fff url(/images/trees.png)",
+     backdrop: `
+             rgba(0,0,123,0.4)
+             url("/images/nyan-cat.gif")
+             left top
+             no-repeat
+           `,
+   });
+   navigate('/dashboard/dash')
+  
+  })
+  .catch(res => {
+   setRegLoading(false)
+   Swal.fire({
+     icon: "error",
+     title: "Oops...",
+     text: "Something went wrong",
+   });
+  })
+}
 
  if(regLoading){
   return (
@@ -260,7 +295,7 @@ const Register = () => {
             Google
           </button>
           <button
-            onClick={handelGoogle}
+            onClick={handelGitHub}
             className=" bg-white hover:bg-[#EEEEEE] border-2 border-[#393E46] w-full text-[#393E46] font-bold py-2 flex items-center justify-center lg:gap-3 sm:gap-2 gap-1 px-4 rounded-md mt-4"
           >
             <img className="w-[30px]" src="/images/github.png" alt="" />

@@ -1,73 +1,108 @@
+import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
-    // const {Google,In} = UseAuth()
+    const {Google,In,GitHub} = useContext(AuthContext)
     const nav = useNavigate()
     const location = useLocation()
     // const AxiousPublic = UseAxious()
     const from = location?.state?.from?.pathname || '/'
     
     const handleSignIN = (e)=>{
-    //   e.preventDefault()
-    //   const email = e.target.email.value
-    //   const password = e.target.password.value
-    //   In(email, password)
-    //   .then((res) => {
-    //      Swal.fire({
-    //       title: "Your account have been created.",
-    //       width: 600,
-    //       padding: "3em",
-    //       color: "#716add",
-    //       background: "#fff url(/images/trees.png)",
-    //       backdrop: `
-    //               rgba(0,0,123,0.4)
-    //               url("/images/nyan-cat.gif")
-    //               left top
-    //               no-repeat
-    //             `,
-    //     });
-    //     console.log(res.user);
-    //     nav(from, { replace: true });
+      e.preventDefault()
+      const email = e.target.email.value
+      const password = e.target.password.value
+      In(email, password)
+      .then((res) => {
+         Swal.fire({
+          title: "Your account have been created.",
+          width: 600,
+          padding: "3em",
+          color: "#716add",
+          background: "#fff url(/images/trees.png)",
+          backdrop: `
+                  rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  left top
+                  no-repeat
+                `,
+        });
+        console.log(res.user);
+        nav('/dashboard/dash');
         
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     alert('Sign in failed ');
-    //   });
+      })
+      .catch(err=>{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong",
+        });
+      })
     }
 
     const handleGoogle = ()=>{
-    //   Google()
-    //   .then(res => {
-    //     const loggedUser = { email: res.user.email , name : res.user.displayName };
-    //     AxiousPublic.post("/users",  loggedUser )
-    //     .then((res) => {
-    //       console.log(res.data)
-    //     })
-    //      Swal.fire({
-    //       title: "Your account have been created.",
-    //       width: 600,
-    //       padding: "3em",
-    //       color: "#716add",
-    //       background: "#fff url(/images/trees.png)",
-    //       backdrop: `
-    //               rgba(0,0,123,0.4)
-    //               url("/images/nyan-cat.gif")
-    //               left top
-    //               no-repeat
-    //             `,
-    //     });
-    //     nav(from, { replace: true });
+      Google()
+      .then(res => {
+         Swal.fire({
+          title: "Your account have been created.",
+          width: 600,
+          padding: "3em",
+          color: "#716add",
+          background: "#fff url(/images/trees.png)",
+          backdrop: `
+                  rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  left top
+                  no-repeat
+                `,
+        });
+        nav('/dashboard/dash');
        
-    //    })
-    //   .catch(err=>{
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Oops...",
-    //       text: "Something went wrong",
-    //     });
-    //   })
+       })
+      .catch(err=>{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong",
+        });
+      })
+}
+
+
+const handelGitHub = ()=>{
+  GitHub()
+  .then(res => {
+   // const loggedUser = { email: res.user.email , name : res.user.displayName };
+   // AxiousPublic.post("/users",  loggedUser )
+   //  .then((res) => {
+   //    console.log(res.data)
+   //  })
+   Swal.fire({
+     title: "Your account have been created.",
+     width: 600,
+     padding: "3em",
+     color: "#716add",
+     background: "#fff url(/images/trees.png)",
+     backdrop: `
+             rgba(0,0,123,0.4)
+             url("/images/nyan-cat.gif")
+             left top
+             no-repeat
+           `,
+   });
+   nav('/dashboard/dash')
+  
+  })
+  .catch(res => {
+   Swal.fire({
+     icon: "error",
+     title: "Oops...",
+     text: "Something went wrong",
+   });
+  })
 }
 
     return (
@@ -118,14 +153,14 @@ const Login = () => {
 <div className="divider">OR</div>
 <div className="flex lg:gap-2 gap-1">
           <button
-            
+            onClick={handleGoogle}
             className=" bg-white hover:bg-[#EEEEEE] border-2 border-[#393E46] w-full text-[#393E46] font-bold py-2 flex items-center justify-center lg:gap-3 sm:gap-2 gap-1 px-4 rounded-md mt-4"
           >
             <img className="w-[30px]" src="/images/google.png" alt="" />
             Google
           </button>
           <button
-            
+            onClick={handelGitHub}
             className=" bg-white hover:bg-[#EEEEEE] border-2 border-[#393E46] w-full text-[#393E46] font-bold py-2 flex items-center justify-center lg:gap-3 sm:gap-2 gap-1 px-4 rounded-md mt-4"
           >
             <img className="w-[30px]" src="/images/github.png" alt="" />

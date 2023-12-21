@@ -12,6 +12,7 @@ import Register from './Components/Pages/Register/Register';
 import Login from './Components/Pages/Login/Login';
 import DashboardLayout from './Components/Layout/DashboardLayout';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
+import AuthProvider from './Components/Providers/AuthProvider';
 
 
 
@@ -56,6 +57,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router} />
+    <AuthProvider>
+    <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
