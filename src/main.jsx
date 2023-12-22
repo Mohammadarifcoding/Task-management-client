@@ -20,6 +20,7 @@ import DashboardLayout from './Components/Layout/DashboardLayout';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import AuthProvider from './Components/Providers/AuthProvider';
 import PrivateProvider from './Components/Providers/PrivateProvider';
+import Notifications from './Components/Notifications/Notifications';
 
 
 
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
         path:'dash',
         element:<Dashboard></Dashboard>
         
+      },
+      {
+        path:'notify',
+        element:<Notifications></Notifications>
       }
     ]
   }

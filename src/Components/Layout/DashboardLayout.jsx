@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { FaHome } from "react-icons/fa";
 import Drawer from 'react-modern-drawer'
 import { RxHamburgerMenu } from "react-icons/rx";
+import { IoNotificationsCircle } from "react-icons/io5";
 
 //import styles 👇
 import 'react-modern-drawer/dist/index.css'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -22,12 +23,18 @@ const DashboardLayout = () => {
                     <p className='xl:text-xl text-lg font-semibold text-white'>Mohammad Arif</p>
                 </div>
 
-                <div className='px-[20px] mt-16'>
-              <button className='flex p-[20px] w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white gap-3 text-lg font-medium'> <img src="/images/dashBoardIcon.svg" alt="" />Dashboard</button>
-              <div className="divider divide  text-white">OR</div>
-              <Link to={'/'}>
-              <button className='flex p-[20px] w-full rounded-xl  border-[#272A30] hover:bg-[#282931] border text-white gap-3 text-lg font-medium'> <FaHome className="text-3xl"></FaHome>  Home </button>
-              </Link>
+                <div className='px-[20px] mt-16 dashboarItem'>
+                    <NavLink to='/dashboard/dash'>
+                    <button className='flex p-[20px] w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white gap-3 text-lg font-medium'> <img src="/images/dashBoardIcon.svg" alt="" />Dashboard</button>
+                    </NavLink>
+                        <NavLink to={'/dashboard/notify'}>
+                      <button className='flex p-[20px] mt-4 w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white items-center gap-3 text-lg font-medium'> <IoNotificationsCircle className="text-3xl"/> Notifications</button>
+                          </NavLink>
+              
+                     <div className="divider divide  text-white">OR</div>
+                      <Link to={'/'}>
+                       <button className='flex p-[20px] w-full rounded-xl  border-[#272A30] hover:bg-[#282931] border text-white gap-3 text-lg font-medium'> <FaHome className="text-3xl"></FaHome>  Home </button>
+                      </Link>
               
             
                 </div>
@@ -79,13 +86,19 @@ const DashboardLayout = () => {
                     <p className=' font-semibold text-white'>Mohammad Arif</p>
                 </div>
 
-                <div className='px-[20px] mt-16'>
-              <button className='flex p-[20px] w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white gap-3 text-lg font-medium'> <img src="/images/dashBoardIcon.svg" alt="" />Dashboard</button>
-              <div className="divider divide  text-white">OR</div>
-              <Link to={'/'}>
-              <button className='flex p-[20px] w-full rounded-xl  border-[#272A30] hover:bg-[#282931] border text-white gap-3 text-lg font-medium'> <FaHome className="text-3xl"></FaHome>  Home </button>
-              </Link>
-              <button onClick={toggleDrawer}>Show</button>
+                <div className='px-[20px] mt-16 dashboarItem'>
+                    <NavLink to='/dashboard/dash'>
+                    <button className='flex p-[20px] w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white gap-3 text-lg font-medium'> <img src="/images/dashBoardIcon.svg" alt="" />Dashboard</button>
+                    </NavLink>
+                        <NavLink to={'/dashboard/notify'}>
+                      <button className='flex p-[20px] mt-4 w-full rounded-xl  bg-[#272A30] border-[#272A30] border text-white items-center gap-3 text-lg font-medium'> <IoNotificationsCircle className="text-3xl"/> Notifications</button>
+                          </NavLink>
+              
+                     <div className="divider divide  text-white">OR</div>
+                      <Link to={'/'}>
+                       <button className='flex p-[20px] w-full rounded-xl  border-[#272A30] hover:bg-[#282931] border text-white gap-3 text-lg font-medium'> <FaHome className="text-3xl"></FaHome>  Home </button>
+                      </Link>
+              
             
                 </div>
             </Drawer>

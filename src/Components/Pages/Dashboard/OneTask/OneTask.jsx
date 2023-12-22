@@ -20,9 +20,13 @@ const OneTask = ({data,task}) => {
                 <div className='bg-[#FF7A00] px-[5px] h-[10px] rounded-full'></div> Completd Task
                 </h2> :''
             }
-              <div className='flex  flex-wrap   mt-6 gap-4'>
-                    {data?.map(task=> <TaskCard task={task} key={task.Id}></TaskCard>)}
-            </div>
+             {
+                        data?.length ? <div className='flex  flex-wrap   mt-6 gap-4'>
+                        {data?.map(task=> <TaskCard task={task} key={task.Id}></TaskCard>)}
+                </div> : <div className='h-[160px] flex text-white justify-center items-center'>
+                         <h2 className='lg:text-2xl font-semibold text-xl md:text-2xl sm:text-2xl'>No task {task} </h2>
+                </div>
+                }
         </div>
     );
 };

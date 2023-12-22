@@ -61,7 +61,7 @@ const Dashboard = () => {
     
       
 
-      axios.post('http://localhost:3000/addtasks',taskData)
+      axios.post('https://task-server-silk-eight.vercel.app/addtasks',taskData)
       .then(res => {
         console.log(res)
        refectch()

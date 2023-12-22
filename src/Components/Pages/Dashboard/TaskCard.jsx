@@ -34,12 +34,12 @@ const TaskCard = ({ task }) => {
     setShowModal(!showModal)
   }
 
-//   setInterval(() => {
-//     setTime({ hours: time?.hours, minutes: time?.minutes, seconds: time?.seconds })
-//   }, 500);
+  // setInterval(() => {
+  //   setTime({ hours: time?.hours, minutes: time?.minutes, seconds: time?.seconds })
+  // }, 1000);
 
   const onUpdate = (status,id)=>{
-       axios.put(`http://localhost:3000/updateTask/${status}/${id}`)
+       axios.put(`https://task-server-silk-eight.vercel.app/updateTask/${status}/${id}`)
        .then(res => {
         refetch()
 
@@ -65,7 +65,8 @@ const TaskCard = ({ task }) => {
       className="bg-[#292731] rounded-lg lg:p-5 sm:p-4 p-3 min-w-[250px] w-full max-w-[400px]"
       key={task.Id}
     >
-      <div className="flex gap-5 items-center">
+      <div className="flex justify-between items-center">
+        <div className="flex gap-4 items-center">
         <div
           className={`px-3 py-2 text-white w-fit rounded-full text-[12px] ${
             task?.status == "pending" ? "bg-[#562CFF] " : ""
@@ -84,6 +85,8 @@ const TaskCard = ({ task }) => {
         >
           {task?.priority}
         </div>
+        </div>
+        
         {/* <div>{time.hours} : {time.minutes} :{time.seconds}</div> */}
       </div>
 
@@ -91,7 +94,9 @@ const TaskCard = ({ task }) => {
       <p className="mt-3 text-sm text-gray-300">{task?.task_description}</p>
       <div className="flex flex-wrap justify-between items-center">
         <p className="text-sm mt-4">
-          Deadline :{" "}
+          {
+            task?.status  == 'completed' ? '':<>
+            Deadline :{" "}
           {time.hours < 0 ? (
             "Time Finished"
           ) : (
@@ -99,6 +104,9 @@ const TaskCard = ({ task }) => {
               {time.hours} Hou : {time.minutes} Min :{time.seconds} Sec
             </>
           )}{" "}
+            </>
+          }
+          
         </p>
         <button className="cursor-pointer" onClick={showTheMOdal}><FaArrowRight  className="text-white mt-2"></FaArrowRight></button>
         
