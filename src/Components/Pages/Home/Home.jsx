@@ -20,7 +20,7 @@ const Home = () => {
                 </div>
                 <p className='text-gray-400 text-center md:text-base text-sm'>Unlimited Users . Unlimited Task . Free Forever</p>
                 <div className='max-w-[1000px]  mt-10 mx-auto xl:px-0 px-4'>
-                         <img className='w-full h-full' src="/public/images/banner.png" alt="" />
+                         <img className='w-full h-full' src="/images/banner.png" alt="" />
                 </div>
             </Container>
         </div>
